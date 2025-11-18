@@ -4,25 +4,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Live Bitcoin Price Chart</title>
+    <title>Podcast & Video Summarizer</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 </head>
 
 <body>
     <div class="container">
         <header>
-            <h1>Bitcoin Price Tracker!</h1>
-            <div class="price-display">
-                <span class="current-price" id="currentPrice">Loading...</span>
-                <span class="price-change" id="priceChange"></span>
-            </div>
+            <h1>🎙️ Podcast & Video Summarizer</h1>
+            <p class="subtitle">Get instant summaries of YouTube videos and podcasts</p>
         </header>
         <main>
-            <canvas id="priceChart"></canvas>
+            <div class="input-section">
+                <div class="input-group">
+                    <label for="urlInput">Enter YouTube URL or Podcast RSS Feed:</label>
+                    <div class="input-wrapper">
+                        <input type="text" id="urlInput" placeholder="https://www.youtube.com/watch?v=..."
+                            autocomplete="off">
+                        <button id="summarizeBtn" class="btn-primary">
+                            <span class="btn-text">Summarize</span>
+                            <span class="btn-loader" style="display: none;">⏳</span>
+                        </button>
+                    </div>
+                    <div class="url-examples">
+                        <small>Examples:</small>
+                        <div class="example-links">
+                            <span>YouTube: youtube.com/watch?v=...</span>
+                            <span>Podcast RSS: feed.podcast.com/episodes</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="errorMessage" class="error-message" style="display: none;"></div>
+
+            <div id="resultsSection" class="results-section" style="display: none;">
+                <div class="video-info" id="videoInfo"></div>
+                <div class="summary-container">
+                    <h2>Summary</h2>
+                    <div id="summaryContent" class="summary-content"></div>
+                </div>
+                <div class="transcript-container" id="transcriptContainer" style="display: none;">
+                    <h2>Transcript</h2>
+                    <div id="transcriptContent" class="transcript-content"></div>
+                </div>
+            </div>
+
+            <div id="loadingSection" class="loading-section" style="display: none;">
+                <div class="spinner"></div>
+                <p>Processing your request...</p>
+                <p class="loading-status" id="loadingStatus"></p>
+            </div>
         </main>
         <footer>
-            <p>Data provided by Binance API</p>
+            <p>Powered by AI • Extract transcripts and generate intelligent summaries</p>
         </footer>
     </div>
     <script src="app.js"></script>
